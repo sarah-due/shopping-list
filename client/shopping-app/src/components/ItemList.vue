@@ -15,12 +15,11 @@
 import { mapState } from 'vuex'
 export default {
   name: 'ItemList',
-  computed: mapState({
-    items: state => state.items
-  }),
-
-  beforeMount () {
-    this.$store.dispatch('loadItems')
+  computed: mapState([
+    'items'
+  ]),
+  mounted () {
+    this.$store.dispatch('LOAD_ITEMS')
   }
 }
 </script>

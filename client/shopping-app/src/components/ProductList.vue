@@ -14,13 +14,14 @@
 
 <script>
 import { mapState } from 'vuex'
+
 export default {
   name: 'ProductList',
-  computed: mapState({
-    products: state => state.products
-  }),
-  beforeMount () {
-    this.$store.dispatch('loadProducts')
+  computed: mapState([
+    'products'
+  ]),
+  mounted () {
+    this.$store.dispatch('LOAD_PRODUCTS')
   }
 }
 </script>

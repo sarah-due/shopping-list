@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-import { fetchProducts } from '@/../api/ProductList'
-import { fetchItemList } from '@/../api/ItemList'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -12,25 +10,30 @@ const state = {
 }
 
 const actions = {
-  loadProducts (data) {
-    return fetchProducts()
-      .then((response) => data.commit('setProducts', { products: response }))
+  LOAD_PRODUCTS ({ commit }) {
+    axios.get('/api/products').then((response) => {
+      commit('SET_PRODUCTS', { products: response.data.products })
+    }, (err) => {
+      console.log(err)
+    })
   },
 
-  loadItems (data) {
-    return fetchItemList()
-      .then((response) => data.commit('setItems', { items: response }))
+  LOAD_ITEMS ({ commit }) {
+    axios.get('/api/items').then((response) => {
+      commit('SET_ITEMS', { items: response.data.items })
+    }, (err) => {
+      console.log(err)
+    })
   }
-
 }
 
 const mutations = {
-  setProducts (state, payload) {
-    state.products = payload.products
+  SET_PRODUCTS: (state, { products }) => {
+    state.products = products
   },
 
-  setItems (state, payload) {
-    state.items = payload.items
+  SET_ITEMS: (state, { items }) => {
+    state.items = items
   }
 }
 
