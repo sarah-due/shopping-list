@@ -13,18 +13,14 @@
 </template>
 
 <script>
-import { fetchProducts } from '@/./../api/ProductList'
+import { mapState } from 'vuex'
 export default {
   name: 'ProductList',
-  data () {
-    return {
-      products: []
-    }
-  },
+  computed: mapState({
+    products: state => state.products
+  }),
   beforeMount () {
-    fetchProducts().then(response => {
-      this.products = response
-    })
+    this.$store.dispatch('loadProducts')
   }
 }
 </script>

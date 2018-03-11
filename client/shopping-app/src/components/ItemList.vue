@@ -12,18 +12,15 @@
 </template>
 
 <script>
-import { fetchItemList } from '@/./../api/ItemList'
+import { mapState } from 'vuex'
 export default {
   name: 'ItemList',
-  data () {
-    return {
-      items: []
-    }
-  },
+  computed: mapState({
+    items: state => state.items
+  }),
+
   beforeMount () {
-    fetchItemList().then(response => {
-      this.items = response
-    })
+    this.$store.dispatch('loadItems')
   }
 }
 </script>

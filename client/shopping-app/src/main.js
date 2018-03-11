@@ -1,9 +1,12 @@
 import Vue from 'vue'
+
+import router from './router'
+import store from './store'
+
 import App from './App'
 import Home from './components/Home'
 import ProductList from './components/ProductList'
 import ItemList from './components/ItemList'
-import router from './router'
 
 Vue.config.productionTip = false
 
@@ -15,6 +18,7 @@ Vue.component('item-list', ItemList)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
