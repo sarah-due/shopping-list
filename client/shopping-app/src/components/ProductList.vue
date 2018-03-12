@@ -6,7 +6,7 @@
           <p class='product-title'>{{ product.productTitle }}</p>
           <img v-bind:src="product.productImg" class='product-img'  alt='Image not available' />
           <p class='product-price'>${{ product.productPrice }}</p>
-          <button><i class="fas fa-plus"></i></button>
+          <button v-on:click="handleClick({product})"><i class="fas fa-plus"></i></button>
         </div>
       </div>
   </div>
@@ -18,10 +18,16 @@ import { mapState } from 'vuex'
 export default {
   name: 'ProductList',
   computed: mapState([
-    'products'
+    'products',
+    'items'
   ]),
   mounted () {
     this.$store.dispatch('LOAD_PRODUCTS')
+  },
+  methods: {
+    handleClick (productData) {
+      this.$store.commit('ADD_ITEM', productData)
+    }
   }
 }
 </script>
