@@ -7,7 +7,7 @@
         <div class='item-card-content' v-for='item in items' v-bind:key='item.itemId'>
           <p class='item-card-data'>{{ item.productData[0].productTitle }}</p>
           <p class='item-card-data'>{{ item.itemQuantity }}</p>
-          <p class='item-card-data'>{{ item.productData[0].productPrice }}</p>
+          <p class='item-card-data'>{{ parseFloat(item.productData[0].productPrice).toFixed(2) }}</p>
           <button class='item-card-button' v-on:click="handleClick({item})"><i class="fas fa-minus"></i></button>
         </div>
       </div>
@@ -44,7 +44,7 @@ export default {
     },
 
     handleClick (item) {
-      this.$store.commit('REMOVE_ITEM', item)
+      this.$store.commit('REMOVE_ITEM', item.item)
     }
   },
 

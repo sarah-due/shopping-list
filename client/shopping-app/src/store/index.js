@@ -39,19 +39,19 @@ const mutations = {
   ADD_ITEM: (state, newItemData) => {
     let matches = 0
     state.items.forEach((item) => {
-      if (item.productData[0].productId === newItemData.product.productId) {
+      if (item.productData[0].productId === newItemData.productId) {
         item.itemQuantity += 1
         matches += 1
       }
     })
     if (matches === 0) {
-      state.items.push({'itemId': state.items.length, 'itemQuantity': 1, 'productData': [newItemData.product]})
+      state.items.push({'itemId': state.items.length, 'itemQuantity': 1, 'productData': [newItemData]})
     }
   },
 
   REMOVE_ITEM: (state, itemToRemove) => {
     state.items.forEach((item, index) => {
-      if (item.productData[0].productId === itemToRemove.item.productData[0].productId) {
+      if (item.productData[0].productId === itemToRemove.productData[0].productId) {
         if (item.itemQuantity === 1) {
           state.items.splice(index, 1)
         } else {
@@ -59,7 +59,25 @@ const mutations = {
         }
       }
     })
+  },
+
+  ADD_PRODUCT: (state, newProduct) => {
+    state.products.push({
+      'productTitle': newProduct.newProductTitle,
+      'productImg': newProduct.newProductImg,
+      'productPrice': newProduct.newProductPrice
+    })
+    // document.getElementById('add-product-form').reset()
+  },
+
+  REMOVE_PRODUCT: (state, productToRemove) => {
+    state.products.forEach((product, index) => {
+      if (product.productId === productToRemove.productId) {
+        state.products.splice(index, 1)
+      }
+    })
   }
+
 }
 
 const getters = {
