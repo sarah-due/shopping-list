@@ -2,7 +2,8 @@
   <div id="product-list">
     <h2>Product List!</h2>
     <div class='product-list'>
-        <div class='product-card-content' v-for='product in products' v-bind:key='product.productId'>
+      <input type='text' v-model='searchInput' placeholder='Search products...' />
+        <div class='product-card-content' v-for='product in filteredProducts' v-bind:key='product.productId'>
           <p class='product-title'>{{ product.productTitle }}</p>
           <img v-bind:src="product.productImg" class='product-img'  alt='Image not available' />
           <p class='product-price'>${{ product.productPrice }}</p>
@@ -17,13 +18,24 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'ProductList',
-  computed: mapState([
-    'products',
-    'items'
-  ]),
+  data () {
+    return {
+      searchInput: ''
+    }
+  },
+  computed: {
+    ...mapState(['products', 'items']),
+    filteredProducts () {
+      return this.products.filter(product => {
+        return product.productTitle.toLowerCase().includes(this.searchInput)
+      })
+    }
+  },
+
   mounted () {
     this.$store.dispatch('LOAD_PRODUCTS')
   },
+
   methods: {
     handleClick (productData) {
       this.$store.commit('ADD_ITEM', productData)

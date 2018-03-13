@@ -5,14 +5,14 @@ import store from './store'
 
 import App from './App'
 import Home from './components/Home'
-import ProductList from './components/ProductList'
 import ItemList from './components/ItemList'
+import ProductList from './components/ProductList'
 
 Vue.config.productionTip = false
 
-Vue.component('product-list', ProductList)
 Vue.component('home', Home)
 Vue.component('item-list', ItemList)
+Vue.component('product-list', ProductList)
 
 /* eslint-disable no-new */
 new Vue({
