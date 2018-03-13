@@ -28,7 +28,7 @@
           <p class='product-price'>${{ parseFloat(product.productPrice).toFixed(2) }}</p>
           <button v-on:click="handleAddItem({product})"><i class="fas fa-plus"></i></button>
           <button v-on:click="handleRemoveProduct({product})"><i class="far fa-times-circle"></i></button>
-          <button v-on:click="handleUpdateProduct({product})"><i class="far fa-edit"></i></button>
+          <button v-on:click="handleUpdateProductModal({product})"><i class="far fa-edit"></i></button>
         </div>
       </div>
   </div>
@@ -36,6 +36,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import eventBus from '../main'
 
 export default {
   name: 'ProductList',
@@ -77,8 +78,9 @@ export default {
       if ((this.newProduct.newProductTitle === '') ||
           (this.newProduct.newProductImg === '') ||
           (this.newProduct.newProductPrice === '')) {
-        this.formMessage = 'Please complete form.'
+        this.formMessage = 'Please complete form before submitting.'
       } else {
+        console.log(this.newProduct)
         this.$store.commit('ADD_PRODUCT', this.newProduct)
         this.resetForm()
       }
@@ -88,6 +90,10 @@ export default {
       this.newProduct.newProductTitle = ''
       this.newProduct.newProductImg = ''
       this.newProduct.newProductPrice = ''
+    },
+
+    handleUpdateProductModal (data) {
+      eventBus.$emit('SEND_PRODUCT_DATA', data.product)
     }
   },
 

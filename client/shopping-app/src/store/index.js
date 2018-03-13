@@ -67,7 +67,17 @@ const mutations = {
       'productImg': newProduct.newProductImg,
       'productPrice': newProduct.newProductPrice
     })
-    // document.getElementById('add-product-form').reset()
+  },
+
+  UPDATE_PRODUCT: (state, updatedProductData) => {
+    console.log(updatedProductData)
+    state.products.forEach((product) => {
+      if (product.productId === updatedProductData.productId) {
+        product.productTitle = updatedProductData.productTitle
+        product.productImg = updatedProductData.productImg
+        product.productPrice = updatedProductData.productPrice
+      }
+    })
   },
 
   REMOVE_PRODUCT: (state, productToRemove) => {

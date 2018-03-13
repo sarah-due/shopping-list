@@ -2,6 +2,7 @@
   <div id="home">
     <product-list/>
     <item-list/>
+    <update-product-modal/>
   </div>
 </template>
 
