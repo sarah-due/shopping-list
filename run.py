@@ -36,6 +36,24 @@ def retrieve_products():
             "productTitle": 'Dogfish Head 60 Minute IPA',
             "productImg": 'https://cdn.shopify.com/s/files/1/0227/0581/products/Dogfish-Head-60-Minute-IPA-6PK-12OZ-BTL.png?v=1514428000',
             "productPrice": 7.95
+          },
+          {
+            "productId": 6,
+            "productTitle": 'Board Games',
+            "productImg": 'https://cf.geekdo-images.com/opengraph/img/iTZcvNfBptXqWcMFkLPwvOjeRxA=/fit-in/1200x630/pic2419375.jpg',
+            "productPrice": 59.95
+          },
+          {
+            "productId": 7,
+            "productTitle": 'Running Shoes',
+            "productImg": 'https://www.rei.com/media/1152f5cb-87a4-48d9-ad95-ff8be5ec7c20?size=1020x510',
+            "productPrice": 149.99
+          },
+          {
+            "productId": 8,
+            "productTitle": 'Fancy Cheese',
+            "productImg": 'http://www.halifaxfarmersmarket.com/wp-content/uploads/2013/11/that-dutchmans-cheese.jpg',
+            "productPrice": 29.95
           }
         ]
     }
@@ -57,7 +75,7 @@ def retrieve_items():
           },
           {
             "itemId": 2,
-            "itemQuantity": 12,
+            "itemQuantity": 3,
             "productData": [{
               "productId": 2,
               "productTitle": 'Puppy',
@@ -73,6 +91,16 @@ def retrieve_items():
               "productTitle": 'Ben and Jerrys Pint',
               "productImg": 'https://cdn6.bigcommerce.com/s-i0b26nwdjv/products/149/images/545/BenJerrys-US-ChubbyHubby-Pint__54421.1482338749.500.750.png?c=2',
               "productPrice": 5.99
+            }]
+          },
+          {
+            "itemId": 4,
+            "itemQuantity": 1,
+            "productData": [{
+              "productId": 6,
+              "productTitle": 'Board Games',
+              "productImg": 'https://cf.geekdo-images.com/opengraph/img/iTZcvNfBptXqWcMFkLPwvOjeRxA=/fit-in/1200x630/pic2419375.jpg',
+              "productPrice": 59.95
             }]
           }
         ]

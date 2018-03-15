@@ -1,5 +1,6 @@
 <template>
   <div id="item-container">
+
     <div class='item-list-container'>
       <p class='item-list-header'>Shopping List</p>
       <hr/>
@@ -18,6 +19,7 @@
         <p>Total Cost: ${{ calculateTotalCost(items) }}</p>
       </div>
     </div>
+
   </div>
 </template>
 

@@ -23,6 +23,7 @@ export default {
 }
 
 #main-container {
+  min-height: 100vh;
   width: 90%;
   max-width: 1400px;
   margin: auto;

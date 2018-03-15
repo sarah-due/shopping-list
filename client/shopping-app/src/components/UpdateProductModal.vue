@@ -171,8 +171,6 @@ button {
 .close-button {
   background-color: #A52026;
   color: #FFF;
-  height: 1.5em;
-  width: 1.5em;
   margin: 25px 15px 0 0;
 }
 

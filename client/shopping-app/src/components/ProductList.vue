@@ -26,9 +26,8 @@
         <label>Search Product List</label>
         <input type='search' v-model='searchInput' placeholder='Search products...' />
       </div>
-    </div>
-    <div class='product-list-container'>
       <hr/>
+    </div>
       <div class='product-card-content' v-for='product in filteredProducts' v-bind:key='product.productId'>
         <p class='product-title'>{{ product.productTitle }}</p>
         <img v-bind:src="product.productImg" class='product-img'  alt='Image not available' />
@@ -37,7 +36,6 @@
         <button class='product-button orange' v-on:click="handleUpdateProductModal({product})"><i class="far fa-edit"></i></button>
         <button class='product-button red' v-on:click="handleRemoveProduct({product})"><i class="far fa-times-circle"></i></button>
       </div>
-    </div>
   </div>
 </template>
 
@@ -63,7 +61,7 @@ export default {
     ...mapState(['products', 'items']),
     filteredProducts () {
       return this.products.filter(product => {
-        return product.productTitle.toLowerCase().includes(this.searchInput)
+        return product.productTitle.toLowerCase().includes(this.searchInput.toLowerCase())
       })
     }
   },
@@ -125,6 +123,7 @@ export default {
 <style scoped>
 
 #product-container {
+  min-height: 100vh;
   display: grid;
   grid-auto-rows: max-content;
   background-color: white;
@@ -160,7 +159,7 @@ export default {
 
 #add-product-form {
   padding: 0 40px;
-  margin: auto;
+  margin: 0 auto;
   display: grid;
   align-items: end;
   grid-template-columns: 1fr 1fr 1fr 100px;
@@ -215,13 +214,13 @@ export default {
 }
 
 .product-title, .product-price {
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   font-size: 20px;
 }
 
 .product-img {
-  margin: auto;
+  margin: 0 auto;
   border-radius: 3px;
   height: 150px;
   width: auto;
@@ -234,7 +233,6 @@ export default {
   width: 2em;
   height: 2em;
   border-radius: 5px;
-  margin: 50% auto;
 }
 
 .orange {
