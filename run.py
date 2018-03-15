@@ -21,7 +21,7 @@ def retrieve_products():
           },
           {
             "productId": 3,
-            "productTitle": 'Ben and Jerrys Pint',
+            "productTitle": 'Ben and Jerry\'s Pint',
             "productImg": 'https://cdn6.bigcommerce.com/s-i0b26nwdjv/products/149/images/545/BenJerrys-US-ChubbyHubby-Pint__54421.1482338749.500.750.png?c=2',
             "productPrice": 5.99
           },

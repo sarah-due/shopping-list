@@ -1,8 +1,10 @@
 <template>
   <div id="home">
-    <product-list/>
-    <item-list/>
-    <update-product-modal/>
+    <div id='main-container'>
+      <product-list/>
+      <item-list/>
+      <update-product-modal/>
+    </div>
   </div>
 </template>
 
@@ -14,8 +16,25 @@ export default {
 
 <style>
 #home {
+  background-color: #247BA0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#main-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
   display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-gap: 50px;
 }
+
+@media only screen and (max-width: 900px) {
+  #main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>

@@ -70,12 +70,20 @@ const mutations = {
   },
 
   UPDATE_PRODUCT: (state, updatedProductData) => {
-    console.log(updatedProductData)
     state.products.forEach((product) => {
       if (product.productId === updatedProductData.productId) {
         product.productTitle = updatedProductData.productTitle
         product.productImg = updatedProductData.productImg
         product.productPrice = updatedProductData.productPrice
+      }
+    })
+
+    state.items.forEach((item) => {
+      let itemData = item.productData[0]
+      if (itemData.productId === updatedProductData.productId) {
+        itemData.productTitle = updatedProductData.productTitle
+        itemData.productImg = updatedProductData.productImg
+        itemData.productPrice = updatedProductData.productPrice
       }
     })
   },

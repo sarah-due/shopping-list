@@ -1,23 +1,27 @@
 <template>
   <div id='update-product-modal' v-if="showModal">
-    <h3>Update Product</h3>
-    <form @submit.prevent='handleSubmit' id=''>
-      <div class='update-form-section'>
-        <label>Name of Product: </label>
-        <input type='text' placeholder='Name' v-model='product.productTitle'>
+    <div id='modal-container'>
+      <h3 class='form-header'>Update Product</h3>
+      <div class='form-container'>
+        <form @submit.prevent='handleSubmit' id=''>
+          <div class='update-form-section'>
+            <label>Name of Product: </label>
+            <input type='text' placeholder='Name' v-model='product.productTitle'>
+          </div>
+          <div class='update-form-section'>
+            <label>Link to Product Image: </label>
+            <input type='text' placeholder='Link' v-model='product.productImg'>
+          </div>
+          <div class='update-form-section'>
+            <label>Price of Product: </label>
+            <span>$</span><input type='text' placeholder='Price' v-model='product.productPrice' />
+          </div>
+          <p>{{ formMessage }}</p>
+          <button class='update-button' type='submit'>Update Item</button>
+          <button class='cancel-button' v-on:click="handleCancelButton()">Cancel</button>
+        </form>
       </div>
-      <div class='update-form-section'>
-        <label>Link to Product Image: </label>
-        <input type='text' placeholder='Link' v-model='product.productImg'>
-      </div>
-      <div class='update-form-section'>
-        <label>Price of Product: </label>
-        <span>$</span><input type='text' placeholder='Price' v-model='product.productPrice' />
-      </div>
-      <p>{{ formMessage }}</p>
-      <button type='submit'>Update Item</button>
-      <button v-on:click="handleCancelButton()">Cancel</button>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -92,15 +96,56 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+
+#update-product-modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(54,69,79, 0.8);
+}
+
+#modal-container {
+  width: 80%;
+  max-width: 800px;
+  height: 80%;
+  max height: 400px;
+  margin: 10em auto 0;
+  border-radius: 10px;
+  background-color: #FFF;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 8px 8px rgba(0,0,0,0.23);
+}
+
+.form-header {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: auto;
+  font-family: 'Open Sans', sans-serif;
+}
 
 button {
-  font-size: 24px;
-  background-color: #A52026;
+  font-size: 20px;
   cursor: pointer;
   color: #FFF;
   height: 2em;
   border-radius: 5px;
   margin: auto;
+}
+
+.update-button {
+  background-color: #247BA0;
+}
+
+.cancel-button {
+  background-color: #EB783F;
 }
 </style>

@@ -1,36 +1,43 @@
 <template>
-  <div id="product-list">
-    <h2>Product List!</h2>
-    <input type='search' v-model='searchInput' placeholder='Search products...' />
-    <div>
-      <h3>Add a new Product</h3>
+  <div id="product-container">
+    <div class='product-header-container'>
+      <div class='product-header'>
+        <h1>Shopping List</h1>
+        <hr/>
+      </div>
+      <h3 class='product-form-header'>Add a new Product</h3>
       <form @submit.prevent='handleSubmit' id='add-product-form'>
         <div class='product-form-section'>
-          <label>Name of Product: </label>
+          <label>Name of Product</label>
           <input type='text' placeholder='Name' v-model='newProduct.newProductTitle'>
         </div>
         <div class='product-form-section'>
-          <label>Link to Product Image: </label>
+          <label>Link to Product Image</label>
           <input type='text' placeholder='Link' v-model='newProduct.newProductImg'>
         </div>
         <div class='product-form-section'>
-          <label>Price of Product: </label>
-          <span>$</span><input type='text' placeholder='Price' v-model='newProduct.newProductPrice' />
+          <label>Price of Product</label>
+          <input type='text' placeholder='Price' v-model='newProduct.newProductPrice' />
         </div>
-        <p>{{ formMessage }}</p>
-        <button type='submit'>Add Item</button>
+        <button class='add-product-button' type='submit'>Add Item</button>
       </form>
-    </div>
-    <div class='product-list'>
-        <div class='product-card-content' v-for='product in filteredProducts' v-bind:key='product.productId'>
-          <p class='product-title'>{{ product.productTitle }}</p>
-          <img v-bind:src="product.productImg" class='product-img'  alt='Image not available' />
-          <p class='product-price'>${{ parseFloat(product.productPrice).toFixed(2) }}</p>
-          <button v-on:click="handleAddItem({product})"><i class="fas fa-plus"></i></button>
-          <button v-on:click="handleRemoveProduct({product})"><i class="far fa-times-circle"></i></button>
-          <button v-on:click="handleUpdateProductModal({product})"><i class="far fa-edit"></i></button>
-        </div>
+      <p class='product-form-message'>{{ formMessage }}</p>
+      <div class='search-container'>
+        <label>Search Product List</label>
+        <input type='search' v-model='searchInput' placeholder='Search products...' />
       </div>
+    </div>
+    <div class='product-list-container'>
+      <hr/>
+      <div class='product-card-content' v-for='product in filteredProducts' v-bind:key='product.productId'>
+        <p class='product-title'>{{ product.productTitle }}</p>
+        <img v-bind:src="product.productImg" class='product-img'  alt='Image not available' />
+        <p class='product-price'>${{ parseFloat(product.productPrice).toFixed(2) }}</p>
+        <button class='product-button teal' v-on:click="handleAddItem({product})"><i class="fas fa-plus"></i></button>
+        <button class='product-button orange' v-on:click="handleUpdateProductModal({product})"><i class="far fa-edit"></i></button>
+        <button class='product-button red' v-on:click="handleRemoveProduct({product})"><i class="far fa-times-circle"></i></button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -93,6 +100,7 @@ export default {
     },
 
     handleUpdateProductModal (data) {
+      console.log(data)
       eventBus.$emit('SEND_PRODUCT_DATA', data.product)
     }
   },
@@ -114,36 +122,172 @@ export default {
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.add-product-form {
-  display: flex;
-  flex-direction: row;
+
+#product-container {
+  display: grid;
+  grid-auto-rows: max-content;
+  background-color: white;
+  margin: 25px auto;
+  border-radius: 5px;
 }
 
-.product-list {
+.product-header-container {
   display: grid;
-  grid-template-rows: repeat(5, 1fr)
+  grid-auto-rows: max-content
+}
+
+.product-header {
+  padding: 20px 100px 10px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.product-list-header {
+  padding: 0 25px;
+  font-family: 'Lato', sans-serif;
+}
+
+.search-container {
+  padding: 0 40px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search-container label {
+  padding-right: 5px;
+}
+
+.product-form-container {
+  padding: 0 25px;
+}
+
+.product-form-header {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  margin-top: 0;
+}
+
+#add-product-form {
+  padding: 0 40px;
+  margin: auto;
+  display: grid;
+  align-items: end;
+  grid-template-columns: 1fr 1fr 1fr 100px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#add-product-form input {
+  margin: 5px;
+  width: 80%;
+  min-width: 120px;
+}
+
+.add-product-button {
+  width: 120px;
+  height: 35px;
+  margin: 0 auto 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #20B2AA;
+  color: #FFF;
+}
+
+.add-product-button:hover {
+  background-color: #FFF;
+  color: #20B2AA;
+  border: 2px solid #20B2AA;
+}
+
+.product-form-message {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .product-card-content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 50px 50px 50px
+  grid-template-columns: 1fr 1fr 1fr 60px 60px 60px;
+  padding: 15px 12px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-button {
+.product-title, .product-price {
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
+}
+.product-img {
+  margin: auto;
+  border-radius: 3px;
+  height: 150px;
+  width: auto;
+}
+
+.product-button {
   font-size: 24px;
-  background-color: #A52026;
   cursor: pointer;
   color: #FFF;
   width: 2em;
   height: 2em;
   border-radius: 5px;
-  margin: auto;
+  margin: 50% auto;
+}
+
+.orange {
+  background-color: #FF8C00;
+}
+
+.orange:hover {
+  background-color: #FFF;
+  color: #FF8C00;
+  border: 1px solid #FF8C00;
+}
+
+.orange svg {
+  padding-left: 4px;
+}
+
+.red {
+  background-color: #A52026;
+}
+
+.red:hover {
+  background-color: #FFF;
+  color: #A52026;
+  border: 1px solid #A52026;
+}
+
+.teal {
+  background-color: #20B2AA;
+}
+
+.teal:hover {
+  background-color: #FFF;
+  color: #20B2AA;
+  border: 1px solid #20B2AA;
 }
 
 img {
   height: 200px;
   width: auto;
 }
+
+hr {
+  border-bottom: 1px solid black;
+  width: 90%;
+  margin: 35px auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  #add-product-form {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+
+  #add-product-form input {
+    margin: 5px;
+    width: 100%;
+  }
+}
+
 </style>
