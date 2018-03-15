@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 #item-container {
-  padding: 0 15px;
+  padding-left: 25px;
   min-width: 275px;
 }
 

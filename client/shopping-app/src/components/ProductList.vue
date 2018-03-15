@@ -148,16 +148,6 @@ export default {
   font-family: 'Lato', sans-serif;
 }
 
-.search-container {
-  padding: 0 40px;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.search-container label {
-  padding-right: 5px;
-}
-
 .product-form-container {
   padding: 0 25px;
 }
@@ -175,11 +165,11 @@ export default {
   align-items: end;
   grid-template-columns: 1fr 1fr 1fr 100px;
   font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
 }
 
 #add-product-form input {
-  margin: 5px;
-  width: 80%;
+  margin: 5px 10px 5px 0;
   min-width: 120px;
 }
 
@@ -191,6 +181,7 @@ export default {
   border-radius: 5px;
   background-color: #20B2AA;
   color: #FFF;
+  font-size: 18px;
 }
 
 .add-product-button:hover {
@@ -202,6 +193,18 @@ export default {
 .product-form-message {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+  color: #A52026;
+}
+
+.search-container {
+  padding: 0 40px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+}
+
+.search-container label {
+  padding-right: 5px;
 }
 
 .product-card-content {
@@ -216,6 +219,7 @@ export default {
   text-align: center;
   font-size: 20px;
 }
+
 .product-img {
   margin: auto;
   border-radius: 3px;
@@ -270,6 +274,10 @@ export default {
 img {
   height: 200px;
   width: auto;
+}
+
+input {
+  font-size: 18px;
 }
 
 hr {

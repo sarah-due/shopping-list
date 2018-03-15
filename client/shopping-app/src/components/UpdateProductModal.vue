@@ -1,7 +1,10 @@
 <template>
   <div id='update-product-modal' v-if="showModal">
     <div id='modal-container'>
-      <h3 class='form-header'>Update Product</h3>
+      <div class='close-button-wrapper'>
+        <button class='close-button' v-on:click="handleCancelButton()"><i class="fas fa-times"></i></button>
+      </div>
+      <h1 class='form-header'>Update Product</h1>
       <div class='form-container'>
         <form @submit.prevent='handleSubmit' id=''>
           <div class='update-form-section'>
@@ -14,11 +17,13 @@
           </div>
           <div class='update-form-section'>
             <label>Price of Product: </label>
-            <span>$</span><input type='text' placeholder='Price' v-model='product.productPrice' />
+            <input type='text' placeholder='Price' v-model='product.productPrice' />
           </div>
           <p>{{ formMessage }}</p>
-          <button class='update-button' type='submit'>Update Item</button>
-          <button class='cancel-button' v-on:click="handleCancelButton()">Cancel</button>
+          <div class='button-wrapper'>
+            <button class='update-button' type='submit'>Update Item</button>
+            <button class='cancel-button' v-on:click="handleCancelButton()">Cancel</button>
+          </div>
         </form>
       </div>
     </div>
@@ -111,9 +116,9 @@ export default {
 
 #modal-container {
   width: 80%;
-  max-width: 800px;
+  max-width: 600px;
   height: 80%;
-  max height: 400px;
+  max-height: 400px;
   margin: 10em auto 0;
   border-radius: 10px;
   background-color: #FFF;
@@ -123,13 +128,31 @@ export default {
 .form-header {
   font-family: 'Lato', sans-serif;
   text-align: center;
-  padding-top: 5rem;
+  padding-top: 4rem;
 }
 
 .form-container {
-  max-width: 600px;
+  max-width: 400px;
   margin: auto;
   font-family: 'Open Sans', sans-serif;
+}
+
+.update-form-section {
+  margin: 5px auto;
+  display: table;
+  font-size: 18px;
+}
+
+.update-form-section input {
+  display: table-cell;
+  width: 100%;
+  font-size: 18px;
+  padding: 0 2px;
+  margin: 3px 0;
+}
+
+.button-wrapper {
+  text-align: center;
 }
 
 button {
@@ -141,11 +164,42 @@ button {
   margin: auto;
 }
 
+.close-button-wrapper {
+  float: right;
+}
+
+.close-button {
+  background-color: #A52026;
+  color: #FFF;
+  height: 1.5em;
+  width: 1.5em;
+  margin: 25px 15px 0 0;
+}
+
+.close-button:hover {
+  background-color: #FFF;
+  color: #A52026;
+  border: 1px solid #A52026;
+}
+
 .update-button {
-  background-color: #247BA0;
+  background-color: #20B2AA;
+}
+
+.update-button:hover {
+  background-color: #FFF;
+  color: #20B2AA;
+  border: 1px solid #20B2AA;
 }
 
 .cancel-button {
   background-color: #EB783F;
 }
+
+.cancel-button:hover {
+  background-color: #FFF;
+  color: #EB783F;
+  border: 1px solid #EB783F;
+}
+
 </style>
