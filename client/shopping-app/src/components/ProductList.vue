@@ -85,7 +85,6 @@ export default {
           (this.newProduct.newProductPrice === '')) {
         this.formMessage = 'Please complete form before submitting.'
       } else {
-        console.log(this.newProduct)
         this.$store.commit('ADD_PRODUCT', this.newProduct)
         this.resetForm()
       }
@@ -98,7 +97,6 @@ export default {
     },
 
     handleUpdateProductModal (data) {
-      console.log(data)
       eventBus.$emit('SEND_PRODUCT_DATA', data.product)
     }
   },
