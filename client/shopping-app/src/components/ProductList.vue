@@ -1,11 +1,17 @@
 <template>
-  <div id="product-container">
+  <div id='product-container'>
     <div class='product-header-container'>
       <div class='product-header'>
         <h1>Shopping List</h1>
         <hr/>
       </div>
-      <h3 class='product-form-header'>Add a new Product</h3>
+      <div class='product-form-header-wrapper'>
+        Add a New Product
+        <div class='add-product-tooltip'>
+          <i class='fas fa-info-circle info-circle'></i>
+          <span class='add-product-tooltip-text'>Here's where you can add new products and information to your list!</span>
+        </div>
+      </div>
       <form @submit.prevent='handleSubmit' id='add-product-form'>
         <div class='product-form-section'>
           <label>Name of Product</label>
@@ -131,7 +137,7 @@ export default {
 
 .product-header-container {
   display: grid;
-  grid-auto-rows: max-content
+  grid-auto-rows: max-content;
 }
 
 .product-header {
@@ -140,7 +146,7 @@ export default {
   font-family: 'Lato', sans-serif;
 }
 
-.product-list-header {
+.product-list-header-wrapper {
   padding: 0 25px;
   font-family: 'Lato', sans-serif;
 }
@@ -149,10 +155,39 @@ export default {
   padding: 0 25px;
 }
 
-.product-form-header {
+.product-form-header-wrapper {
+  display: inline-flex;
+  justify-content: center;
   font-family: 'Lato', sans-serif;
+  font-size: 24px;
   text-align: center;
-  margin-top: 0;
+  margin: 0 0 20px;
+}
+
+.add-product-tooltip-text {
+  width: 130px;
+  background-color: rgba(0, 0, 120, 0.8);
+  color: #FFF;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 8px;
+  margin-left: 6px;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.info-circle {
+  padding-left: 4px;
+  font-size: 0.8em;
+}
+
+.info-circle:hover {
+  cursor: pointer;
+}
+
+.add-product-tooltip:hover .add-product-tooltip-text {
+  visibility: visible;
 }
 
 #add-product-form {
