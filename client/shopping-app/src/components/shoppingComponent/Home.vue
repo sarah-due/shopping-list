@@ -1,16 +1,25 @@
 <template>
   <div id="home">
-    <div id='main-container'>
-      <product-list/>
-      <item-list/>
-      <update-product-modal/>
+    <div id='main-shopping-container'>
+      <ProductList />
+      <ItemList />
+      <UpdateProductModal />
     </div>
   </div>
 </template>
 
 <script>
+import ItemList from './ItemList'
+import ProductList from './ProductList'
+import UpdateProductModal from './UpdateProductModal'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    ItemList,
+    ProductList,
+    UpdateProductModal
+  }
 }
 </script>
 
@@ -22,7 +31,7 @@ export default {
   box-sizing: border-box;
 }
 
-#main-container {
+#main-shopping-container {
   min-height: 100vh;
   width: 90%;
   max-width: 1400px;
@@ -32,7 +41,7 @@ export default {
 }
 
 @media only screen and (max-width: 900px) {
-  #main-container {
+  #main-shopping-container {
     display: grid;
     grid-template-columns: 1fr;
   }

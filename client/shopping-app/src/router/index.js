@@ -1,17 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const routerOptions = [
-  { path: '/', component: 'Home' },
-  { path: '*', component: 'NotFound' }
-]
+import About from '@/components/About'
+import Home from '@/components/shoppingComponent/Home'
+import NotFound from '@/components/NotFound'
 
-const routes = routerOptions.map(route => {
-  return {
-    ...route,
-    component: () => import(`@/components/${route.component}.vue`)
-  }
-})
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '*', component: NotFound }
+]
 
 Vue.use(Router)
 

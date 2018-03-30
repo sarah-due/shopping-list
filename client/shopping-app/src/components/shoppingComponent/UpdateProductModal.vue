@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import eventBus from '../main'
+import {eventBus} from '../../main'
 
 export default {
   name: 'UpdateProductModal',
@@ -50,7 +50,9 @@ export default {
 
   beforeMount () {
     this.$store.dispatch('LOAD_PRODUCTS')
+    console.log("I made it to the modal!");
     eventBus.$on('SEND_PRODUCT_DATA', (data) => {
+      console.log('here is the event bus');
       this.showModal = true
       this.product.productId = data.productId
       this.product.productTitle = data.productTitle
